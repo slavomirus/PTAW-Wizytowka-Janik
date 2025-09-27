@@ -51,6 +51,51 @@
             padding: 2rem 0;
             text-align: center;
             box-shadow: var(--shadow-subtle);
+            position: relative;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .lang-btn.active {
+            background: var(--gradient-primary);
+            border-color: var(--primary-burgundy);
+            color: var(--text-light);
+        }
+
+        .lang-btn:not(.active) {
+            opacity: 0.7;
+        }
+
+        .lang-btn:not(.active):hover {
+            opacity: 1;
         }
 
         .header-content h1 {
@@ -211,7 +256,7 @@
         }
 
         .submit-btn {
-            background: var(--gradient-primary);
+            background: var(--gradient-accent);
             color: var(--text-light);
             padding: 1rem 2rem;
             border: none;
@@ -255,6 +300,7 @@
             color: var(--text-light);
             padding: 2rem 0;
             text-align: center;
+            border-top: 1px solid var(--border-dark);
         }
 
         .social-links {
@@ -306,6 +352,16 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
+        /* Language Content */
+        .lang-content {
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-content.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -347,6 +403,17 @@
                 height: 45px;
                 font-size: 1.2rem;
             }
+
+            .language-switcher {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .lang-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -367,9 +434,15 @@
 <body>
     <header>
         <div class="container">
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="pl" title="Polski">🇵🇱</button>
+                <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+            </div>
+            
             <div class="header-content">
-                <h1>Krzysztof Janik</h1>
-                <p class="subtitle">Junior FullStack Developer</p>
+                <h1 data-translate="name">Krzysztof Janik</h1>
+                <p class="subtitle" data-translate="title">Junior FullStack Developer</p>
             </div>
         </div>
     </header>
@@ -378,59 +451,59 @@
         <div class="container">
             <!-- About Section -->
             <section class="section fade-in">
-                <h2>O mnie</h2>
+                <h2 data-translate="about-title">O mnie</h2>
                 <div class="about-content">
-                    <p>Jestem studentem 2 roku informatyki na Merito. W wolnym czasie lubię spacerować po lesie z moim pieskiem. Pasjonuję się programowaniem i ciągle rozwijam swoje umiejętności w dziedzinie technologii webowych.</p>
+                    <p data-translate="about-text">Jestem studentem 2 roku informatyki na Merito. W wolnym czasie lubię spacerować po lesie z moim pieskiem. Pasjonuję się programowaniem i ciągle rozwijam swoje umiejętności w dziedzinie technologii webowych.</p>
                 </div>
             </section>
 
             <!-- Skills Section -->
             <section class="section fade-in">
-                <h2>Umiejętności</h2>
+                <h2 data-translate="skills-title">Umiejętności</h2>
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <h3>Angielski</h3>
+                        <h3 data-translate="skill-english">Angielski</h3>
                         <p class="skill-level">B2/C1</p>
                     </div>
                     <div class="skill-card">
                         <h3>Python</h3>
-                        <p class="skill-level">Intermediate</p>
+                        <p class="skill-level" data-translate="skill-python">Intermediate</p>
                     </div>
                     <div class="skill-card">
                         <h3>Java</h3>
-                        <p class="skill-level">Beginner</p>
+                        <p class="skill-level" data-translate="skill-java">Beginner</p>
                     </div>
                     <div class="skill-card">
                         <h3>C++</h3>
-                        <p class="skill-level">Beginner</p>
+                        <p class="skill-level" data-translate="skill-cpp">Beginner</p>
                     </div>
                     <div class="skill-card">
                         <h3>Assembly</h3>
-                        <p class="skill-level">Beginner</p>
+                        <p class="skill-level" data-translate="skill-assembly">Beginner</p>
                     </div>
                 </div>
             </section>
 
             <!-- Contact Form -->
             <section class="section fade-in">
-                <h2>Kontakt</h2>
+                <h2 data-translate="contact-title">Kontakt</h2>
                 <form class="contact-form" method="POST" action="#" novalidate>
                     <div class="form-group">
-                        <label for="name">Imię *</label>
-                        <input type="text" id="name" name="name" required minlength="2" maxlength="50" placeholder="Wprowadź swoje imię">
+                        <label for="name" data-translate="form-name">Imię *</label>
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="50" data-translate-placeholder="form-name-placeholder" placeholder="Wprowadź swoje imię">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="twoj@email.com">
+                        <label for="email" data-translate="form-email">Email *</label>
+                        <input type="email" id="email" name="email" required data-translate-placeholder="form-email-placeholder" placeholder="twoj@email.com">
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Wiadomość *</label>
-                        <textarea id="message" name="message" required minlength="10" maxlength="1000" placeholder="Napisz swoją wiadomość..."></textarea>
+                        <label for="message" data-translate="form-message">Wiadomość *</label>
+                        <textarea id="message" name="message" required minlength="10" maxlength="1000" data-translate-placeholder="form-message-placeholder" placeholder="Napisz swoją wiadomość..."></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Wyślij wiadomość</button>
+                    <button type="submit" class="submit-btn" data-translate="form-submit">Wyślij wiadomość</button>
                 </form>
             </section>
         </div>
@@ -444,9 +517,104 @@
                 <a href="#" aria-label="Email" title="Email">📧</a>
                 <a href="#" aria-label="Twitter" title="Twitter">🐦</a>
             </div>
-            <p class="footer-text">&copy; 2024 Krzysztof Janik. Wszystkie prawa zastrzeżone.</p>
+            <p class="footer-text" data-translate="footer-copyright">&copy; 2024 Krzysztof Janik. Wszystkie prawa zastrzeżone.</p>
         </div>
     </footer>
+
+    <script>
+        // Language translations
+        const translations = {
+            pl: {
+                'name': 'Krzysztof Janik',
+                'title': 'Junior FullStack Developer',
+                'about-title': 'O mnie',
+                'about-text': 'Jestem studentem 2 roku informatyki na Merito. W wolnym czasie lubię spacerować po lesie z moim pieskiem. Pasjonuję się programowaniem i ciągle rozwijam swoje umiejętności w dziedzinie technologii webowych.',
+                'skills-title': 'Umiejętności',
+                'skill-english': 'Angielski',
+                'skill-python': 'Intermediate',
+                'skill-java': 'Beginner',
+                'skill-cpp': 'Beginner',
+                'skill-assembly': 'Beginner',
+                'contact-title': 'Kontakt',
+                'form-name': 'Imię *',
+                'form-name-placeholder': 'Wprowadź swoje imię',
+                'form-email': 'Email *',
+                'form-email-placeholder': 'twoj@email.com',
+                'form-message': 'Wiadomość *',
+                'form-message-placeholder': 'Napisz swoją wiadomość...',
+                'form-submit': 'Wyślij wiadomość',
+                'footer-copyright': '© 2024 Krzysztof Janik. Wszystkie prawa zastrzeżone.'
+            },
+            en: {
+                'name': 'Krzysztof Janik',
+                'title': 'Junior FullStack Developer',
+                'about-title': 'About Me',
+                'about-text': 'I am a 2nd year computer science student at Merito. In my free time, I enjoy walking in the forest with my dog. I am passionate about programming and constantly developing my skills in web technologies.',
+                'skills-title': 'Skills',
+                'skill-english': 'English',
+                'skill-python': 'Intermediate',
+                'skill-java': 'Beginner',
+                'skill-cpp': 'Beginner',
+                'skill-assembly': 'Beginner',
+                'contact-title': 'Contact',
+                'form-name': 'Name *',
+                'form-name-placeholder': 'Enter your name',
+                'form-email': 'Email *',
+                'form-email-placeholder': 'your@email.com',
+                'form-message': 'Message *',
+                'form-message-placeholder': 'Write your message...',
+                'form-submit': 'Send Message',
+                'footer-copyright': '© 2024 Krzysztof Janik. All rights reserved.'
+            }
+        };
+
+        // Language switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const currentLang = localStorage.getItem('language') || 'pl';
+
+            // Set initial language
+            setLanguage(currentLang);
+
+            // Add click listeners to language buttons
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+
+            function setLanguage(lang) {
+                // Update active button
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+                // Update all translatable elements
+                const elements = document.querySelectorAll('[data-translate]');
+                elements.forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                // Update placeholders
+                const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
+                placeholderElements.forEach(element => {
+                    const key = element.getAttribute('data-translate-placeholder');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    }
+                });
+
+                // Save language preference
+                localStorage.setItem('language', lang);
+
+                // Update page title
+                document.title = lang === 'en' ? 'Krzysztof Janik - Junior FullStack Developer' : 'Krzysztof Janik - Junior FullStack Developer';
+            }
+        });
+    </script>
 
 </body>
 </html>
