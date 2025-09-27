@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krzysztof Janik - Junior FullStack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-burgundy: #8B1538;
+            --primary-navy: #1B365D;
+            --primary-dark-green: #2D5016;
+            --accent-light: #F8F9FA;
+            --text-dark: #2C3E50;
+            --text-light: #FFFFFF;
+            --bg-light: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --border-light: #E1E8ED;
+            --gradient-primary: linear-gradient(135deg, var(--primary-burgundy), var(--primary-navy));
+            --gradient-secondary: linear-gradient(135deg, var(--primary-navy), var(--primary-dark-green));
+            --gradient-accent: linear-gradient(135deg, var(--primary-burgundy), var(--primary-navy));
+            --shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-primary);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-burgundy);
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .header-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-navy);
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section {
+            background: var(--bg-card);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-subtle);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: var(--primary-burgundy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--gradient-secondary);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-burgundy);
+            box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-secondary);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: var(--accent-light);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content .subtitle {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 1.5rem 1rem;
+            }
+
+            .skill-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Krzysztof Janik</h1>
+                <p class="subtitle">Junior FullStack Developer</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <section class="section fade-in">
+                <h2>O mnie</h2>
+                <div class="about-content">
+                    <p>Jestem studentem 2 roku informatyki na Merito. W wolnym czasie lubię spacerować po lesie z moim pieskiem. Pasjonuję się programowaniem i ciągle rozwijam swoje umiejętności w dziedzinie technologii webowych.</p>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section fade-in">
+                <h2>Umiejętności</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Angielski</h3>
+                        <p class="skill-level">B2/C1</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Python</h3>
+                        <p class="skill-level">Intermediate</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Java</h3>
+                        <p class="skill-level">Beginner</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>C++</h3>
+                        <p class="skill-level">Beginner</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Assembly</h3>
+                        <p class="skill-level">Beginner</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form -->
+            <section class="section fade-in">
+                <h2>Kontakt</h2>
+                <form class="contact-form" method="POST" action="#" novalidate>
+                    <div class="form-group">
+                        <label for="name">Imię *</label>
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="50" placeholder="Wprowadź swoje imię">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="twoj@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Wiadomość *</label>
+                        <textarea id="message" name="message" required minlength="10" maxlength="1000" placeholder="Napisz swoją wiadomość..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Wyślij wiadomość</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn" title="LinkedIn">💼</a>
+                <a href="#" aria-label="GitHub" title="GitHub">🐙</a>
+                <a href="#" aria-label="Email" title="Email">📧</a>
+                <a href="#" aria-label="Twitter" title="Twitter">🐦</a>
+            </div>
+            <p class="footer-text">&copy; 2024 Krzysztof Janik. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
