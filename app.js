@@ -761,7 +761,7 @@ function createTaskCard(task) {
                             
                             <!-- Deadline zadania (jeśli istnieje) -->
                             ${deadlineDate ? `
-                                <span class="chip ${isOverdue && !task.completed ? 'red white-text' : 'blue white-text'}">
+                                <span class="chip ${isOverdue && !task.completed ? 'red white-text' : 'custom-primary white-text'}">
                                     <i class="material-icons tiny">event</i>
                                     ${deadlineDate}
                                 </span>
@@ -778,7 +778,7 @@ function createTaskCard(task) {
                         
                         <!-- Przyciski akcji (Edytuj, Usuń) -->
                         <div class="task-actions" style="margin-top: 15px;">
-                            <button class="btn-small waves-effect waves-light blue darken-2 edit-task" 
+                            <button class="btn-small waves-effect waves-light custom-primary edit-task" 
                                     data-task-id="${task.id}">
                                 <i class="material-icons left">edit</i>
                                 Edytuj
@@ -1419,12 +1419,13 @@ function updateCounters() {
  * Używane do informowania użytkownika o sukcesie, błędzie lub innych zdarzeniach
  * 
  * @param {string} message - Tekst wiadomości do wyświetlenia
- * @param {string} type - Typ powiadomienia: 'success' (zielone), 'error' (czerwone), 'info' (niebieskie)
+ * @param {string} type - Typ powiadomienia: 'success' (zielone), 'error' (czerwone), 'info' (fioletowy - kolor aplikacji)
  */
 function showToast(message, type = 'info') {
     // Określ kolor tła powiadomienia w zależności od typu
     // Operator warunkowy (ternary): jeśli type === 'success', użyj 'green', w przeciwnym razie sprawdź dalej
-    const bgColor = type === 'success' ? 'green' : type === 'error' ? 'red' : 'blue';
+    // Dla typu 'info' używamy customowego koloru aplikacji (#BF08BD)
+    const bgColor = type === 'success' ? 'green' : type === 'error' ? 'red' : 'custom-toast-info';
     
     // Wyświetl powiadomienie używając Materialize Toast
     // M.toast() - metoda Materialize która wyświetla powiadomienie toast
@@ -1435,7 +1436,7 @@ function showToast(message, type = 'info') {
     // }
     M.toast({
         html: message,          // Tekst wiadomości
-        classes: bgColor,       // Kolor tła (green/red/blue)
+        classes: bgColor,       // Kolor tła (green/red/custom-toast-info)
         displayLength: 3000     // Czas wyświetlania: 3000ms = 3 sekundy
     });
 }

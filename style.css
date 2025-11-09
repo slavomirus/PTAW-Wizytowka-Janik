@@ -2,6 +2,13 @@
    APLIKACJA TODO - DODATKOWE STYLE
    ============================================ */
 
+/* Customowy kolor aplikacji */
+:root {
+    --primary-color: #BF08BD;
+    --primary-color-dark: #9a0698;
+    --primary-color-light: #d43dd2;
+}
+
 /* Globalne style */
 body {
     font-family: 'Roboto', sans-serif;
@@ -9,6 +16,39 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+/* Customowe klasy kolorów */
+.custom-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.custom-primary-dark {
+    background-color: var(--primary-color-dark) !important;
+}
+
+.custom-primary-text {
+    color: var(--primary-color) !important;
+}
+
+/* Style dla przycisków z customowym kolorem */
+.btn.custom-primary,
+.btn-small.custom-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn.custom-primary:hover,
+.btn-small.custom-primary:hover {
+    background-color: var(--primary-color-dark) !important;
+}
+
+/* Style dla badge z customowym kolorem */
+.badge.custom-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.badge.custom-primary-dark {
+    background-color: var(--primary-color-dark) !important;
 }
 
 /* Główny kontener */
@@ -20,6 +60,10 @@ main {
    NAVIGATION
    ============================================ */
 
+nav {
+    background-color: var(--primary-color) !important;
+}
+
 nav .brand-logo {
     font-weight: 500;
     padding-left: 10px;
@@ -30,6 +74,7 @@ nav .badge {
     border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
+    background-color: var(--primary-color-dark) !important;
 }
 
 /* ============================================
@@ -48,7 +93,7 @@ nav .badge {
 
 .card-title {
     font-weight: 500;
-    color: #1976d2;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
@@ -176,7 +221,7 @@ nav .badge {
 }
 
 .filter-chip.active {
-    background-color: #1976d2;
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -195,22 +240,22 @@ nav .badge {
 
 .input-field input:focus + label,
 .input-field textarea:focus + label {
-    color: #1976d2 !important;
+    color: var(--primary-color) !important;
 }
 
 .input-field input:focus,
 .input-field textarea:focus {
-    border-bottom: 1px solid #1976d2 !important;
-    box-shadow: 0 1px 0 0 #1976d2 !important;
+    border-bottom: 1px solid var(--primary-color) !important;
+    box-shadow: 0 1px 0 0 var(--primary-color) !important;
 }
 
 .input-field .prefix.active {
-    color: #1976d2;
+    color: var(--primary-color);
 }
 
 /* Date picker styling */
 .datepicker-date-display {
-    background-color: #1976d2;
+    background-color: var(--primary-color);
 }
 
 .datepicker-calendar-container {
@@ -218,14 +263,14 @@ nav .badge {
 }
 
 .datepicker-table td.is-selected {
-    background-color: #1976d2;
+    background-color: var(--primary-color);
 }
 
 .datepicker-cancel,
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
-    color: #1976d2;
+    color: var(--primary-color);
 }
 
 /* Select styling */
@@ -238,7 +283,7 @@ select {
 }
 
 select:focus {
-    border: 1px solid #1976d2;
+    border: 1px solid var(--primary-color);
     outline: none;
 }
 
@@ -339,7 +384,8 @@ select:focus {
    FOOTER
    ============================================ */
 
-footer {
+footer.page-footer {
+    background-color: var(--primary-color) !important;
     margin-top: 40px;
     padding: 20px 0;
 }
@@ -462,18 +508,23 @@ footer .container {
     left: 7%;
 }
 
+/* Customowy kolor toast dla typu info */
+.custom-toast-info {
+    background-color: var(--primary-color) !important;
+}
+
 /* ============================================
    ACCESSIBILITY
    ============================================ */
 
 .task-card:focus-within {
-    outline: 2px solid #1976d2;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
 button:focus,
 a:focus {
-    outline: 2px solid #1976d2;
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
