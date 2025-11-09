@@ -1,0 +1,500 @@
+/* ============================================
+   APLIKACJA TODO - DODATKOWE STYLE
+   ============================================ */
+
+/* Globalne style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Główny kontener */
+main {
+    flex: 1;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav .brand-logo {
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+nav .badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    font-weight: 500;
+    color: #1976d2;
+    margin-bottom: 20px;
+}
+
+.card-title i {
+    vertical-align: middle;
+}
+
+/* ============================================
+   TASK CARDS
+   ============================================ */
+
+.task-card {
+    margin-bottom: 15px;
+    animation: fadeIn 0.3s ease-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.task-card.completed {
+    opacity: 0.7;
+}
+
+.task-card h5 {
+    font-weight: 500;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.task-card .strikethrough {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.task-meta .chip {
+    margin: 0;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-meta .chip i {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.task-actions .btn-small {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 16px;
+    font-size: 13px;
+}
+
+.task-dates {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-dates i {
+    font-size: 14px;
+}
+
+/* Priorytety */
+.priority-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ============================================
+   FILTER CHIPS
+   ============================================ */
+
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.filter-chip {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    color: #424242;
+    text-decoration: none;
+}
+
+.filter-chip:hover {
+    background-color: #bdbdbd;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.filter-chip.active {
+    background-color: #1976d2;
+    color: white;
+}
+
+.filter-chip i {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.input-field label {
+    font-weight: 500;
+}
+
+.input-field input:focus + label,
+.input-field textarea:focus + label {
+    color: #1976d2 !important;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+    border-bottom: 1px solid #1976d2 !important;
+    box-shadow: 0 1px 0 0 #1976d2 !important;
+}
+
+.input-field .prefix.active {
+    color: #1976d2;
+}
+
+/* Date picker styling */
+.datepicker-date-display {
+    background-color: #1976d2;
+}
+
+.datepicker-calendar-container {
+    border-top: 1px solid #e0e0e0;
+}
+
+.datepicker-table td.is-selected {
+    background-color: #1976d2;
+}
+
+.datepicker-cancel,
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+    color: #1976d2;
+}
+
+/* Select styling */
+select {
+    display: block;
+    border: 1px solid #9e9e9e;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+}
+
+select:focus {
+    border: 1px solid #1976d2;
+    outline: none;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn, .btn-small {
+    border-radius: 4px;
+    text-transform: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .btn-small:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn:active, .btn-small:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-in;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.badge {
+    border-radius: 12px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+#noTasksMessage {
+    padding: 40px 20px;
+    font-size: 16px;
+    color: #9e9e9e;
+}
+
+/* ============================================
+   EXPORT/IMPORT BUTTONS
+   ============================================ */
+
+#exportBtn, #importBtn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+footer .container {
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media only screen and (max-width: 992px) {
+    .task-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .task-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .task-actions .btn-small {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    nav .brand-logo {
+        font-size: 1.5rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+    
+    .task-card h5 {
+        font-size: 1.2rem;
+    }
+    
+    .chip-container {
+        flex-direction: column;
+    }
+    
+    .filter-chip {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .task-meta .chip {
+        font-size: 11px;
+        padding: 0 10px;
+    }
+    
+    #exportBtn, #importBtn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ============================================
+   TOAST CUSTOMIZATION
+   ============================================ */
+
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 10%;
+    left: 7%;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.task-card:focus-within {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    nav,
+    footer,
+    #taskForm,
+    .task-actions,
+    #exportBtn,
+    #importBtn {
+        display: none;
+    }
+    
+    .task-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
